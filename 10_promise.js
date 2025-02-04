@@ -6,7 +6,9 @@
  */
 
 const sleep = () => {
-
-};
-
+        setTimeout(() => {
+            console.log('Hello');
+        }, 2000);
+    }
+sleep();
 module.exports = {sleep};
