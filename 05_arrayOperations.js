@@ -10,7 +10,7 @@
  * 
   */
 
-const multiplyByTwo = (array) => array.map(x => x * 2);
+const multiplyByTwo = (array) => (array.map(x => x * 2));
 
 
 
@@ -24,7 +24,7 @@ const multiplyByTwo = (array) => array.map(x => x * 2);
  *   - Vous ne pouvez pas utiliser de variable (autre que l'argument de la fonction)
   */
 
-const filterNameStartByA = (array) => array.filter(x => x[0] === 'A');
+const filterNameStartByA = (array) => (array.filter(x => x[0] === 'A'));
 
 /**
  * Utiliser la fonction .reduce sur le tableau passé en paramètre
