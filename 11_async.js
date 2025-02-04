@@ -11,7 +11,12 @@
  *    - ne pas utiliser async await
  * 
  */
+const axios = require("axios");
+const { sleep } = require("./10_promise.js");
+
+
 const usingThen = (cb) => {
+    sleep(2000).then(cb);
 }
 
 /**
@@ -25,7 +30,9 @@ const usingThen = (cb) => {
  *   - ne pas utiliser .then
  */
 
-const usingAwait = (cb) => {
+const usingAwait = async (cb) => {
+    await sleep(2000);
+    cb();
 
 }
 
@@ -45,8 +52,14 @@ const usingAwait = (cb) => {
 //const axios = require("axios");
 
 const apiResponse = async (url) => {
-
+    let response = await axios.get(url);
+    return response.data;
 }
 
+usingThen(() => console.log("usingThen après 2s"));
+usingAwait(() => console.log("usingAwait exécuté après 2s"));
+apiResponse("https://jsonplaceholder.typicode.com/todos/1")
+    .then((data) => console.log("Données reçues :", data))
+    .catch((err) => console.error("Erreur API :", err));
 
 module.exports = {usingThen, usingAwait, apiResponse};
